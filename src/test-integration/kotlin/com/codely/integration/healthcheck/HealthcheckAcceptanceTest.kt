@@ -26,4 +26,14 @@ class HealthcheckAcceptanceTest {
                 assertEquals("OK", it.response.contentAsString)
             }
     }
+
+    @Test
+    fun `should successfully access new healthCheck`() {
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/myNewCourse"))
+            .andExpect(MockMvcResultMatchers.status().isOk)
+            .andExpect {
+                assertEquals("CodelyTv Course", it.response.contentAsString)
+            }
+    }
 }
